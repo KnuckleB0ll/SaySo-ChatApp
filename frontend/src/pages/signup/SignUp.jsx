@@ -74,7 +74,10 @@ const SignUp = () => {
           </div>
           <GenderRadioButton onCheckboxChange = {handleGenderCheckbox} selectedGender={inputs.gender}/>
           <div className='p-2'>
-            <button className="text-white btn btn-neutral w-full max-w-xs mx-auto">Sign Up</button>
+            <button className="text-white btn btn-neutral w-full max-w-xs mx-auto"
+            disabled={loading}>
+              {loading ? <span className="loading loading-spinner"></span> : 'Sign Up'}
+            </button>
           </div>
           <div className='p-2'>
             <Link to='/login' className='text-white hover:underline'>Already have an account?</Link>

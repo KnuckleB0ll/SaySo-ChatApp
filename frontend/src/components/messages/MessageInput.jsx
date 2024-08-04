@@ -19,6 +19,7 @@ const MessageInput = () => {
 		<form className='px-4 my-3' onSubmit={handleSubmit}>
 			<div className='w-full relative'>
 				<input
+					name = "message"
 					type='text'
 					className='border text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 text-white'
 					placeholder='Send a message'

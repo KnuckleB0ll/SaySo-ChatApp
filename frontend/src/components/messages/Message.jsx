@@ -1,10 +1,13 @@
+import { extractTime } from "../../../../backend/utils/extractTime";
 import { useAuthContext } from "../../context/AuthContext";
 import useConversation from "../../zustand/useConversation";
 
 const Message = ({message}) => {
     const {authUser} = useAuthContext();
-    const {selectedConversation} =  useConversation()
+    const {selectedConversation} =  useConversation();
+
     const fromMe = message.senderId === authUser._id;
+    const formattedTime = extractTime(message.createdAt);
     const chatClassName = fromMe? 'chat-end' : 'chat-start';
     const profilePic = fromMe? authUser.profilePic: selectedConversation?.profilePic;
     const bubbleBgColor = fromMe? 'bg-blue-500' : "";
@@ -16,7 +19,7 @@ const Message = ({message}) => {
                 </div>
             </div>
             <div className={`chat-bubble text-white ${bubbleBgColor}`}>  {message.message}   </div>
-            <div className="chat-footer text-white text-xs flex gap-1">12:46</div>
+            <div className="chat-footer text-white text-xs flex gap-1">{formattedTime}</div>
         </div>
     );
 };
